@@ -34,31 +34,41 @@ public class JmsMultipleCustomersMessageListenerExample {
 			Queue queue2 = session.createQueue("customerQueue2");
 			Queue queue3 = session.createQueue("customerQueue3");
 			Queue queue4 = session.createQueue("customerQueue4");
+			Queue queue5 = session.createQueue("customerQueue5");
+			Queue queue6 = session.createQueue("customerQueue6");
+			Queue queue7 = session.createQueue("customerQueue7");
+			Queue queue8 = session.createQueue("customerQueue8");
+			Queue queue9 = session.createQueue("customerQueue9");
 
 			List<Queue>listaColas=new ArrayList<Queue>();
 			listaColas.add(queue1);
 			listaColas.add(queue2);
 			listaColas.add(queue3);
 			listaColas.add(queue4);
+			listaColas.add(queue5);
+			listaColas.add(queue6);
+			listaColas.add(queue7);
+			listaColas.add(queue8);
+			listaColas.add(queue9);
 
 
 			// Consumer
-			/*for (int i = 0; i < 4; i++) {
+			for (int i = 0; i < 9; i++) {
 				MessageConsumer consumer = session.createConsumer(listaColas.get(i));
 				consumer.setMessageListener(new ConsumerMessageListener(
 						"Consumer " + i));
-			}*/
+			}
 			connection.start();
 
 			String basePayload = "Important Task";
 
-			for (int i = 0; i < 10; i++) {
+		/*	for (int i = 0; i < 10; i++) {
 				MessageProducer producer = session.createProducer(listaColas.get(i));
 				String payload = basePayload + i;
 				Message msg = session.createTextMessage(payload);
 				System.out.println("Sending text '" + payload + "'");
 				producer.send(msg);
-			}
+			}*/
 
 			Thread.sleep(1000);
 			session.close();
